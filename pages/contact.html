@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us — AgroFuture</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"
+    />
+    <style>
+      .contact-layout {
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 3rem;
+        align-items: start;
+      }
+      .contact-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.2rem;
+        margin-bottom: 1.8rem;
+      }
+      .contact-info-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(62, 255, 138, 0.1);
+        border: 1px solid rgba(62, 255, 138, 0.25);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        flex-shrink: 0;
+      }
+      .contact-info-label {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.45);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 0.3rem;
+      }
+      .contact-info-value {
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+      .contact-info-sub {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.45);
+        margin-top: 0.1rem;
+      }
+      .map-section {
+        height: 340px;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        margin-top: 2rem;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+      }
+      @media (max-width: 900px) {
+        .contact-layout {
+          grid-template-columns: 1fr;
+        }
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ══ HERO ══════════════════════════════════════════════════ -->
+    <section class="page-hero" style="padding-top: 100px; min-height: 48vh">
+      <div
+        class="page-hero-bg"
+        style="
+          background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&q=80');
+        "
+      ></div>
+      <div class="page-hero-overlay"></div>
+      <div class="page-hero-content">
+        <div class="breadcrumb-nav">
+          <a href="../index.html">Home</a><span>/</span><span>Contact Us</span>
+        </div>
+        <div class="section-label">Get In Touch</div>
+        <h1
+          class="section-title"
+          style="font-size: clamp(2.5rem, 6vw, 5rem); letter-spacing: -3px"
+        >
+          Contact<br /><span class="text-neon">AgroFuture</span>
+        </h1>
+        <p class="section-sub">
+          Talk to our agriculture experts. We're here to help every farmer —
+          from beginner to experienced.
+        </p>
+      </div>
+    </section>
+
+    <!-- ══ CONTACT MAIN ════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-inner">
+        <div class="contact-layout reveal">
+          <!-- Info Panel -->
+          <div>
+            <div class="section-label">Contact Details</div>
+            <h2
+              class="section-title"
+              style="font-size: 2rem; margin-bottom: 2rem"
+            >
+              Let's Talk<br />About Farming
+            </h2>
+
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📍</div>
+              <div>
+                <div class="contact-info-label">Our Office</div>
+                <div class="contact-info-value">AgroFuture Research Campus</div>
+                <div class="contact-info-sub">
+                  Plot 42, Agri Tech Zone, Pune, Maharashtra — 411007
+                </div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📞</div>
+              <div>
+                <div class="contact-info-label">Phone</div>
+                <div class="contact-info-value">+91 8237030032</div>
+                <div class="contact-info-sub">
+                  Mon–Sat, 8:00 AM – 7:00 PM IST
+                </div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">✉️</div>
+              <div>
+                <div class="contact-info-label">Email</div>
+                <div class="contact-info-value">virajkothavale14@gmail.com</div>
+                <div class="contact-info-sub">We respond within 24 hours</div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">📟</div>
+              <div>
+                <div class="contact-info-label">Helpline</div>
+                <div class="contact-info-value">+91 9529559196 (Free)</div>
+                <div class="contact-info-sub">
+                  24×7 Agricultural Advisory Service
+                </div>
+              </div>
+            </div>
+            <div class="contact-info-item">
+              <div class="contact-info-icon">🌐</div>
+              <div>
+                <div class="contact-info-label">Social Media</div>
+                <div style="display: flex; gap: 0.7rem; margin-top: 0.5rem">
+                  <a href="#" class="social-link" title="Twitter">𝕏</a>
+                  <a href="#" class="social-link" title="Facebook">f</a>
+                  <a href="#" class="social-link" title="Instagram">📷</a>
+                  <a href="#" class="social-link" title="YouTube">▶</a>
+                  <a href="#" class="social-link" title="WhatsApp">💬</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Map placeholder -->
+            <div class="map-section" id="map-embed"></div>
+          </div>
+
+          <!-- Form Panel -->
+          <div class="glass-card" style="padding: 2.5rem">
+            <div style="margin-bottom: 2rem">
+              <div class="section-label">Send a Message</div>
+              <h3
+                style="
+                  font-family: var(--font-display);
+                  font-weight: 700;
+                  font-size: 1.5rem;
+                "
+              >
+                How Can We Help You?
+              </h3>
+            </div>
+            <form id="contact-form" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name *</label>
+                  <input type="text" placeholder="Jaid" required />
+                </div>
+                <div class="form-group">
+                  <label>Last Name *</label>
+                  <input type="text" placeholder="Mullani" required />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input
+                  type="email"
+                  placeholder="jaidmullani@example.com"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="+91 9156362360" />
+              </div>
+              <div class="form-group">
+                <label>Your State / Region</label>
+                <select>
+                  <option value="">Select your state…</option>
+                  <option>Andhra Pradesh</option>
+                  <option>Assam</option>
+                  <option>Bihar</option>
+                  <option>Gujarat</option>
+                  <option>Haryana</option>
+                  <option>Karnataka</option>
+                  <option>Kerala</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Odisha</option>
+                  <option>Punjab</option>
+                  <option>Rajasthan</option>
+                  <option>Tamil Nadu</option>
+                  <option>Telangana</option>
+                  <option>Uttar Pradesh</option>
+                  <option>West Bengal</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Topic *</label>
+                <select required>
+                  <option value="">What do you need help with?</option>
+                  <option>Crop Advisory</option>
+                  <option>Soil Testing</option>
+                  <option>Government Schemes</option>
+                  <option>Organic Farming</option>
+                  <option>Pest & Disease</option>
+                  <option>Irrigation</option>
+                  <option>Market & Prices</option>
+                  <option>Education & Training</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Your Message *</label>
+                <textarea
+                  placeholder="Describe your question or problem in detail. Our agriculture expert will get back to you within 24 hours…"
+                  required
+                ></textarea>
+              </div>
+              <div
+                class="form-group"
+                style="
+                  display: flex;
+                  align-items: flex-start;
+                  gap: 0.8rem;
+                  margin-top: 0.5rem;
+                "
+              >
+                <input
+                  type="checkbox"
+                  id="consent"
+                  style="width: auto; margin-top: 3px"
+                  required
+                />
+                <label
+                  for="consent"
+                  style="
+                    font-size: 0.82rem;
+                    color: rgba(255, 255, 255, 0.55);
+                    cursor: pointer;
+                  "
+                  >I agree to receive agricultural updates and advisories from
+                  AgroFuture. No spam — only useful farming content.</label
+                >
+              </div>
+              <button
+                type="submit"
+                class="btn-primary-glow w-100"
+                style="
+                  margin-top: 0.5rem;
+                  justify-content: center;
+                  border: none;
+                  width: 100%;
+                "
+              >
+                <span>📬</span><span>Send Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ FAQ ══════════════════════════════════════════════════ -->
+    <section class="section" style="background: rgba(255, 255, 255, 0.02)">
+      <div class="section-inner">
+        <div class="text-center mb-3 reveal">
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+        </div>
+        <div style="max-width: 800px; margin: 0 auto" class="reveal">
+          <div class="faq-item">
+            <button class="faq-question">
+              Is AgroFuture platform free for farmers?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes, AgroFuture is completely free for individual farmers. We
+              believe knowledge and technology should be accessible to every
+              farmer regardless of farm size or income.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What languages does AgroFuture support?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              We currently support Hindi and English, with regional language
+              support (Marathi, Telugu, Kannada, Tamil, Bengali) coming in Q3
+              2025. Our Kisan Call Centre supports all 22 scheduled languages.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How accurate is the weather forecast for agriculture?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Our weather data comes from IMD (India Meteorological Department)
+              integrated with private weather stations. Short-range forecasts (3
+              days) have 92%+ accuracy. We also provide district-level agromet
+              advisories twice weekly.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I get soil testing done through AgroFuture?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              We partner with ICAR-accredited soil testing labs across India.
+              You can request a home soil sample collection kit through the
+              platform. Results are shared within 7 days with specific
+              fertilizer recommendations.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How do I apply for government schemes through your platform?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Our Schemes page provides direct links to official government
+              portals for each scheme. We also provide step-by-step application
+              guides in Hindi and English, along with document checklists to
+              make the process easier.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Do you provide consultation for organic farming certification?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              Yes! We have certified NPOP and PGS-India consultants available
+              for 1-on-1 sessions. We also run group workshops for farmer
+              clusters wanting to transition to organic. Reach out through the
+              contact form above.
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How can agricultural students use AgroFuture for college projects?
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              AgroFuture's knowledge base is ideal for academic research.
+              Students can cite our data, use our crop calendar and soil guides,
+              and access our library of modern farming case studies. We also
+              partner with agriculture colleges for field project support.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ CTA ════════════════════════════════════════════════════ -->
+    <section class="section">
+      <div class="section-inner">
+        <div
+          class="glass-card text-center reveal"
+          style="
+            padding: 4rem;
+            background: linear-gradient(
+              135deg,
+              rgba(26, 92, 52, 0.4),
+              rgba(45, 140, 85, 0.15)
+            );
+          "
+        >
+          <div style="font-size: 3rem; margin-bottom: 1.5rem">🌱</div>
+          <h2 class="section-title">
+            Join 140 Million Farmers<br />Farming Smarter
+          </h2>
+          <p class="section-sub" style="margin: 1rem auto 2rem">
+            Start your journey to modern, profitable, sustainable agriculture
+            today — completely free.
+          </p>
+          <div
+            style="
+              display: flex;
+              gap: 1rem;
+              justify-content: center;
+              flex-wrap: wrap;
+            "
+          >
+            <a href="learn.html" class="btn-primary-glow"
+              ><span>🚀</span><span>Start Learning</span></a
+            >
+            <a href="crops.html" class="btn-ghost"
+              ><span>🌾</span><span>Explore Crops</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../assets/js/components.js"></script>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

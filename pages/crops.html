@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crop Information — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .search-bar{display:flex;gap:1rem;margin-bottom:2rem;align-items:center;}
+    .search-input{flex:1;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:0.85rem 1.2rem;color:white;font-family:var(--font-body);font-size:0.95rem;outline:none;transition:var(--transition);}
+    .search-input:focus{border-color:var(--green-neon);background:rgba(62,255,138,0.05);}
+    .search-input::placeholder{color:rgba(255,255,255,0.3);}
+    .crop-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);z-index:10000;display:none;align-items:center;justify-content:center;padding:2rem;}
+    .crop-modal-overlay.open{display:flex;}
+    .crop-modal{background:linear-gradient(135deg,#0f3d20,#1a5c34);border:1px solid var(--glass-border);border-radius:var(--radius-lg);max-width:600px;width:100%;max-height:90vh;overflow-y:auto;position:relative;}
+    .crop-modal-img{height:260px;background-size:cover;background-position:center;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+    .crop-modal-body{padding:2rem;}
+    .crop-modal-close{position:absolute;top:1rem;right:1rem;background:rgba(0,0,0,0.5);border:none;color:white;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center;transition:var(--transition);}
+    .crop-modal-close:hover{background:var(--green-forest);}
+    .crop-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0;}
+    .crop-detail-item{background:rgba(255,255,255,0.05);border-radius:10px;padding:0.9rem;}
+    .crop-detail-label{font-size:0.72rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.3rem;}
+    .crop-detail-value{font-weight:600;font-size:0.95rem;}
+    @media(max-width:600px){.search-bar{flex-direction:column;}.crop-detail-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Crop Information</span></div>
+      <div class="section-label">Crop Guide</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Crop<br><span class="text-neon">Encyclopedia</span></h1>
+      <p class="section-sub">Detailed guides for 20+ major Indian crops — seasons, soil, water, fertilizer, and harvesting tips.</p>
+    </div>
+  </section>
+
+  <!-- ══ FILTER + GRID ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+
+      <div class="search-bar reveal">
+        <input type="text" class="search-input" id="crop-search" placeholder="🔍  Search crops — rice, wheat, tomato..." />
+      </div>
+
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">🌾 All Crops</button>
+        <button class="filter-btn" data-filter="kharif">☀️ Kharif</button>
+        <button class="filter-btn" data-filter="rabi">❄️ Rabi</button>
+        <button class="filter-btn" data-filter="zaid">🌤️ Zaid</button>
+        <button class="filter-btn" data-filter="vegetable">🥦 Vegetables</button>
+        <button class="filter-btn" data-filter="fruit">🍎 Fruits</button>
+        <button class="filter-btn" data-filter="cash">💰 Cash Crops</button>
+      </div>
+
+      <div class="crops-grid stagger" id="crops-grid">
+
+        <!-- KHARIF -->
+        <div class="crop-card" data-category="kharif" data-name="rice"
+          data-img="https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?w=600&q=80"
+          data-desc="India's most important food crop, cultivated mainly in eastern and southern states. Requires standing water for a significant portion of its growth period."
+          data-season="June – November" data-soil="Clay / Loamy" data-water="High (1200–2000mm)" data-yield="25–50 q/acre" data-states="West Bengal, Punjab, UP, Tamil Nadu">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1536304929831-ee1ca9d44906?w=600&q=80');">
+            <div class="crop-season-tag">Kharif</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🌾 Rice (Paddy)</div>
+            <div class="crop-info">Clay/Loamy · High Water · Jun–Nov</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="kharif" data-name="maize"
+          data-img="https://images.unsplash.com/photo-1601593346740-925612772716?w=600&q=80"
+          data-desc="Third most important cereal crop. Highly versatile — used for food, feed, starch, oil and biofuel. Grows well across diverse agroclimatic zones."
+          data-season="June – September" data-soil="Sandy Loam" data-water="Medium (500–800mm)" data-yield="15–25 q/acre" data-states="Karnataka, MP, Bihar, Rajasthan">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1601593346740-925612772716?w=600&q=80');">
+            <div class="crop-season-tag">Kharif</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🌽 Maize (Corn)</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Jun–Sep</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="kharif" data-name="cotton"
+          data-img="https://images.unsplash.com/photo-1593351415075-3bac9f45c877?w=600&q=80"
+          data-desc="India's most important fiber crop and major cash crop. Known as 'white gold'. Requires long growing season and warm temperatures above 21°C."
+          data-season="April – October" data-soil="Black / Deep Loam" data-water="Medium (500–700mm)" data-yield="8–14 q/acre" data-states="Gujarat, Maharashtra, Telangana, Punjab">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1593351415075-3bac9f45c877?w=600&q=80');">
+            <div class="crop-season-tag">Kharif</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🤍 Cotton</div>
+            <div class="crop-info">Black Soil · Medium Water · Apr–Oct</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="kharif" data-name="soybean"
+          data-img="https://images.unsplash.com/photo-1612257416898-df0e3bcb5862?w=600&q=80"
+          data-desc="Called the 'miracle crop' — it fixes atmospheric nitrogen, reducing fertilizer needs. High in protein and used for oil, meal and dozens of food products."
+          data-season="June – October" data-soil="Loamy / Clay Loam" data-water="Medium (450–700mm)" data-yield="8–14 q/acre" data-states="Madhya Pradesh, Maharashtra, Rajasthan">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1612257416898-df0e3bcb5862?w=600&q=80');">
+            <div class="crop-season-tag">Kharif</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🫘 Soybean</div>
+            <div class="crop-info">Clay Loam · Medium Water · Jun–Oct</div>
+          </div>
+        </div>
+
+        <!-- RABI -->
+        <div class="crop-card" data-category="rabi" data-name="wheat"
+          data-img="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80"
+          data-desc="India's second most important food grain. Grown in the cool winter season across the northern plains. Backbone of the Public Distribution System."
+          data-season="October – March" data-soil="Loam / Clay Loam" data-water="Medium (350–500mm)" data-yield="18–30 q/acre" data-states="Punjab, Haryana, UP, MP, Rajasthan">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80');">
+            <div class="crop-season-tag">Rabi</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🌾 Wheat</div>
+            <div class="crop-info">Loam · Medium Water · Oct–Mar</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="rabi" data-name="mustard"
+          data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+          data-desc="Leading oilseed crop of India. Bright yellow flowers make it one of the most visually stunning crops. Oil used for cooking; residue used as animal feed."
+          data-season="October – February" data-soil="Sandy Loam" data-water="Low (250–400mm)" data-yield="6–10 q/acre" data-states="Rajasthan, UP, Haryana, MP">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');">
+            <div class="crop-season-tag">Rabi</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🟡 Mustard</div>
+            <div class="crop-info">Sandy Loam · Low Water · Oct–Feb</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="rabi" data-name="chickpea"
+          data-img="https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=600&q=80"
+          data-desc="Most important pulse crop in India. Nitrogen-fixer that improves soil. High protein content makes it vital for vegetarian diets across South Asia."
+          data-season="October – March" data-soil="Sandy Loam / Loam" data-water="Low (300–400mm)" data-yield="6–10 q/acre" data-states="MP, Maharashtra, Rajasthan, UP">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1515543904379-3d757afe72e4?w=600&q=80');">
+            <div class="crop-season-tag">Rabi</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🫘 Chickpea (Gram)</div>
+            <div class="crop-info">Sandy Loam · Low Water · Oct–Mar</div>
+          </div>
+        </div>
+
+        <!-- VEGETABLES -->
+        <div class="crop-card" data-category="vegetable" data-name="tomato"
+          data-img="https://images.unsplash.com/photo-1546470427-e26264be0b11?w=600&q=80"
+          data-desc="One of the most widely cultivated and consumed vegetables in India. High value, short duration crop perfect for market gardening and kitchen gardens."
+          data-season="Year-round" data-soil="Loamy / Sandy Loam" data-water="Medium" data-yield="120–160 q/acre" data-states="Andhra Pradesh, Karnataka, Maharashtra, Odisha">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1546470427-e26264be0b11?w=600&q=80');">
+            <div class="crop-season-tag">Vegetable</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🍅 Tomato</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Year-round</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="vegetable" data-name="potato"
+          data-img="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80"
+          data-desc="Fourth most important food crop globally. Grows underground. Extremely versatile and calorie-dense. Good short-duration crop for market gardeners."
+          data-season="October – January" data-soil="Sandy Loam" data-water="Medium" data-yield="80–120 q/acre" data-states="UP, West Bengal, Bihar, Gujarat, MP">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=600&q=80');">
+            <div class="crop-season-tag">Vegetable</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🥔 Potato</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Oct–Jan</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="vegetable" data-name="onion"
+          data-img="https://images.unsplash.com/photo-1508747703725-719777637510?w=600&q=80"
+          data-desc="India is the world's second largest onion producer. Essential culinary crop with massive domestic consumption and export potential. Price-sensitive commodity."
+          data-season="Oct–Jan / Jun–Aug" data-soil="Loamy / Sandy Loam" data-water="Medium" data-yield="60–80 q/acre" data-states="Maharashtra, Karnataka, MP, Gujarat, Rajasthan">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1508747703725-719777637510?w=600&q=80');">
+            <div class="crop-season-tag">Vegetable</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🧅 Onion</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Biannual</div>
+          </div>
+        </div>
+
+        <!-- FRUITS -->
+        <div class="crop-card" data-category="fruit" data-name="mango"
+          data-img="https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&q=80"
+          data-desc="King of fruits. India produces 50% of world's mangoes. Long-term investment with 20–50 year productive life. High export value and domestic demand."
+          data-season="March – June (harvest)" data-soil="Deep Loam / Alluvial" data-water="Low–Medium" data-yield="40–80 kg/tree" data-states="UP, Andhra Pradesh, Karnataka, Bihar, Gujarat">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1553279768-865429fa0078?w=600&q=80');">
+            <div class="crop-season-tag">Fruit</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🥭 Mango</div>
+            <div class="crop-info">Deep Loam · Low Water · Mar–Jun</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="fruit" data-name="banana"
+          data-img="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&q=80"
+          data-desc="Year-round fruit crop with 12-month harvest cycle. India is the world's largest banana producer. High water requirement but excellent returns."
+          data-season="Year-round" data-soil="Rich Loamy / Alluvial" data-water="High (900–1200mm)" data-yield="200–300 q/acre" data-states="Tamil Nadu, Maharashtra, AP, Gujarat, UP">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=600&q=80');">
+            <div class="crop-season-tag">Fruit</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🍌 Banana</div>
+            <div class="crop-info">Rich Loam · High Water · Year-round</div>
+          </div>
+        </div>
+
+        <!-- CASH CROPS -->
+        <div class="crop-card" data-category="cash" data-name="sugarcane"
+          data-img="https://images.unsplash.com/photo-1628352081506-83c43123ed6d?w=600&q=80"
+          data-desc="Most important commercial crop. Raw material for sugar, jaggery, ethanol and bagasse. Long growing period of 10–18 months but very high revenue per acre."
+          data-season="Oct–Feb (plant) / Oct–Feb (harvest)" data-soil="Loamy / Red" data-water="Very High (1500–2500mm)" data-yield="300–400 q/acre" data-states="UP, Maharashtra, Karnataka, Tamil Nadu">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1628352081506-83c43123ed6d?w=600&q=80');">
+            <div class="crop-season-tag">Cash Crop</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🎋 Sugarcane</div>
+            <div class="crop-info">Loamy · Very High Water · 12–18 months</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="cash" data-name="tea"
+          data-img="https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&q=80"
+          data-desc="Perennial plantation crop with 40–50 year productive life. India is the world's second largest tea producer and consumer. High employment generator."
+          data-season="Year-round (plucked every 7–14 days)" data-soil="Acidic (pH 4.5–5.5)" data-water="High (1500–3000mm)" data-yield="800–1200 kg/acre/year" data-states="Assam, West Bengal, Tamil Nadu, Kerala">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=600&q=80');">
+            <div class="crop-season-tag">Cash Crop</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🍵 Tea</div>
+            <div class="crop-info">Acidic Soil · High Water · Year-round</div>
+          </div>
+        </div>
+
+        <!-- ZAID -->
+        <div class="crop-card" data-category="zaid" data-name="watermelon"
+          data-img="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80"
+          data-desc="Short-duration summer crop grown in Zaid season. High market value due to seasonal demand. Grows well on sandy loam riverbed soils with drip irrigation."
+          data-season="February – May" data-soil="Sandy Loam" data-water="Medium" data-yield="80–120 q/acre" data-states="UP, Haryana, Rajasthan, Karnataka">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80');">
+            <div class="crop-season-tag">Zaid</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🍉 Watermelon</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Feb–May</div>
+          </div>
+        </div>
+
+        <div class="crop-card" data-category="zaid" data-name="cucumber"
+          data-img="https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=600&q=80"
+          data-desc="Fast-growing Zaid vegetable that thrives in warm weather. Short 60-day crop cycle allows multiple crops per year. Popular in salads and refreshing summer drinks."
+          data-season="March – June" data-soil="Sandy Loam" data-water="Medium" data-yield="40–60 q/acre" data-states="UP, Punjab, Haryana, Karnataka">
+          <div class="crop-img" style="background-image:url('https://images.unsplash.com/photo-1604977042946-1eecc30f269e?w=600&q=80');">
+            <div class="crop-season-tag">Zaid</div>
+          </div>
+          <div class="crop-body">
+            <div class="crop-name">🥒 Cucumber</div>
+            <div class="crop-info">Sandy Loam · Medium Water · Mar–Jun</div>
+          </div>
+        </div>
+
+      </div><!-- /crops-grid -->
+    </div>
+  </section>
+
+  <!-- ══ SEASONAL CALENDAR ══════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Planner</div>
+        <h2 class="section-title">Seasonal Crop Calendar</h2>
+      </div>
+      <div class="glass-card reveal" style="overflow-x:auto;">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Season</th><th>Sowing Period</th><th>Harvest Period</th><th>Key Crops</th><th>Rainfall Needed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span style="color:#FFD700;font-weight:700;">☀️ Kharif</span></td>
+              <td>June – July</td><td>September – November</td>
+              <td>Rice, Maize, Jowar, Bajra, Cotton, Soybean, Groundnut</td><td>600–1200 mm</td>
+            </tr>
+            <tr>
+              <td><span style="color:#87CEEB;font-weight:700;">❄️ Rabi</span></td>
+              <td>October – November</td><td>February – April</td>
+              <td>Wheat, Barley, Mustard, Gram, Lentil, Peas</td><td>Irrigated (250–500mm)</td>
+            </tr>
+            <tr>
+              <td><span style="color:#98FB98;font-weight:700;">🌤️ Zaid</span></td>
+              <td>February – March</td><td>May – June</td>
+              <td>Watermelon, Cucumber, Bitter Gourd, Moong, Fodder crops</td><td>Irrigated</td>
+            </tr>
+            <tr>
+              <td><span style="color:var(--green-neon);font-weight:700;">🌿 Perennial</span></td>
+              <td>Year-round</td><td>Year-round</td>
+              <td>Banana, Coconut, Sugarcane, Tea, Coffee, Rubber</td><td>900–3000 mm</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CROP MODAL ════════════════════════════════════════════ -->
+  <div class="crop-modal-overlay" id="crop-modal">
+    <div class="crop-modal">
+      <button class="crop-modal-close" id="modal-close">✕</button>
+      <div class="crop-modal-img" id="modal-img"></div>
+      <div class="crop-modal-body">
+        <div class="content-card-tag" id="modal-tag"></div>
+        <h2 class="section-title" style="font-size:1.8rem;margin-bottom:0.8rem;" id="modal-name"></h2>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.65);line-height:1.8;" id="modal-desc"></p>
+        <div class="crop-detail-grid" id="modal-details"></div>
+        <a href="schemes.html" class="btn-primary-glow" style="display:inline-flex;margin-top:0.5rem;"><span>🏛️</span><span>View Related Schemes</span></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ── Crop Modal ─────────────────────────────────────────────
+    const modal = document.getElementById('crop-modal');
+    document.querySelectorAll('.crop-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.getElementById('modal-img').style.backgroundImage = `url('${card.dataset.img}')`;
+        document.getElementById('modal-name').textContent = card.querySelector('.crop-name').textContent;
+        document.getElementById('modal-tag').textContent = card.querySelector('.crop-season-tag').textContent;
+        document.getElementById('modal-desc').textContent = card.dataset.desc;
+        document.getElementById('modal-details').innerHTML = `
+          <div class="crop-detail-item"><div class="crop-detail-label">🗓 Season</div><div class="crop-detail-value">${card.dataset.season}</div></div>
+          <div class="crop-detail-item"><div class="crop-detail-label">🌍 Best Soil</div><div class="crop-detail-value">${card.dataset.soil}</div></div>
+          <div class="crop-detail-item"><div class="crop-detail-label">💧 Water Need</div><div class="crop-detail-value">${card.dataset.water}</div></div>
+          <div class="crop-detail-item"><div class="crop-detail-label">📦 Average Yield</div><div class="crop-detail-value">${card.dataset.yield}</div></div>
+          <div class="crop-detail-item" style="grid-column:span 2"><div class="crop-detail-label">📍 Major States</div><div class="crop-detail-value">${card.dataset.states}</div></div>
+        `;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    document.getElementById('modal-close').addEventListener('click', () => { modal.classList.remove('open'); document.body.style.overflow = ''; });
+    modal.addEventListener('click', e => { if(e.target === modal){ modal.classList.remove('open'); document.body.style.overflow = ''; } });
+
+    // ── Crop Search ────────────────────────────────────────────
+    document.getElementById('crop-search').addEventListener('input', function() {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.crop-card').forEach(card => {
+        card.style.display = card.dataset.name.includes(q) ? 'block' : (q ? 'none' : 'block');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Organic Farming — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .benefit-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;transition:var(--transition);text-align:center;}
+    .benefit-card:hover{transform:translateY(-6px);border-color:rgba(62,255,138,0.3);box-shadow:0 20px 60px rgba(0,0,0,0.3),var(--shadow-green);}
+    .benefit-icon{font-size:3.5rem;margin-bottom:1rem;}
+    .benefit-title{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:0.6rem;}
+    .benefit-text{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;}
+    .benefit-stat{margin-top:1rem;font-size:1.6rem;font-family:var(--font-display);font-weight:800;color:var(--green-neon);}
+    .fertilizer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .fert-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.5rem;transition:var(--transition);}
+    .fert-card:hover{border-color:rgba(62,255,138,0.3);transform:translateY(-4px);}
+    .fert-icon{font-size:2.5rem;margin-bottom:0.8rem;}
+    .fert-name{font-family:var(--font-display);font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;}
+    .fert-text{font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;}
+    .fert-npk{margin-top:0.8rem;font-size:0.75rem;color:var(--green-neon);font-weight:600;}
+    .method-timeline{position:relative;padding:0 1rem;}
+    .method-step{display:grid;grid-template-columns:80px 1fr;gap:2rem;margin-bottom:3rem;align-items:start;}
+    .step-num{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--green-forest),var(--green-mid));display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.5rem;font-weight:800;flex-shrink:0;box-shadow:0 0 20px rgba(62,255,138,0.2);}
+    .step-content{}
+    .step-title{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:0.6rem;}
+    .step-text{font-size:0.9rem;color:rgba(255,255,255,0.6);line-height:1.75;}
+    @media(max-width:900px){.benefit-grid{grid-template-columns:1fr 1fr;}.fertilizer-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.benefit-grid,.fertilizer-grid{grid-template-columns:1fr;}.method-step{grid-template-columns:56px 1fr;gap:1rem;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Organic Farming</span></div>
+      <div class="section-label">Sustainable Agriculture</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Organic<br><span class="text-neon">Farming</span></h1>
+      <p class="section-sub">Farm in harmony with nature. Better for the soil, the environment, and your earnings.</p>
+    </div>
+  </section>
+
+  <!-- ══ WHY ORGANIC ════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Benefits</div>
+        <h2 class="section-title">Why Go <span class="text-neon">Organic?</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Organic farming benefits the farmer, the consumer, and the planet — all at the same time.</p>
+      </div>
+      <div class="benefit-grid stagger">
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <div class="benefit-title">Higher Income</div>
+          <div class="benefit-text">Organic produce commands 20–40% price premium in markets and export channels, directly boosting farmer income.</div>
+          <div class="benefit-stat">+35% Revenue</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌍</div>
+          <div class="benefit-title">Healthier Soil</div>
+          <div class="benefit-text">Organic methods rebuild microbial activity, improve soil structure, and increase organic carbon over time.</div>
+          <div class="benefit-stat">3× Microbes</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">💧</div>
+          <div class="benefit-title">Water Conservation</div>
+          <div class="benefit-text">Organic matter acts as a sponge — increasing water-holding capacity by up to 20% per 1% increase in organic carbon.</div>
+          <div class="benefit-stat">-25% Water Use</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🌱</div>
+          <div class="benefit-title">No Chemical Residue</div>
+          <div class="benefit-text">Certified organic produce has zero harmful pesticide residues, meeting international food safety standards for export.</div>
+          <div class="benefit-stat">100% Clean</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">♻️</div>
+          <div class="benefit-title">Carbon Sequestration</div>
+          <div class="benefit-text">Organic farms capture and store significantly more carbon than conventional farms, helping fight climate change.</div>
+          <div class="benefit-stat">-0.9 t CO₂/acre</div>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🐝</div>
+          <div class="benefit-title">Biodiversity</div>
+          <div class="benefit-text">Organic farms support 30% more plant and 50% more insect species compared to conventional farms — including vital pollinators.</div>
+          <div class="benefit-stat">+50% Species</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ZBNF METHOD ════════════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="col-2 reveal">
+        <div>
+          <div class="section-label">ZBNF</div>
+          <h2 class="section-title">Zero Budget Natural Farming</h2>
+          <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.5rem;">Developed by Padmashri Subhash Palekar, ZBNF is India's revolutionary farming movement that requires zero purchased inputs — just locally available materials and traditional wisdom.</p>
+          <div class="info-box">
+            <div class="info-box-title">🧪 The 4 Pillars of ZBNF</div>
+            <p><strong style="color:var(--green-neon);">Jeevamrit</strong> — liquid fermented biofertilizer<br>
+            <strong style="color:var(--green-neon);">Bijamrit</strong> — seed treatment solution<br>
+            <strong style="color:var(--green-neon);">Acchadana</strong> — soil mulching technique<br>
+            <strong style="color:var(--green-neon);">Whapasa</strong> — soil moisture-air balance management</p>
+          </div>
+          <a href="schemes.html" class="btn-primary-glow" style="display:inline-flex;margin-top:1.5rem;"><span>🏛️</span><span>ZBNF Govt. Support</span></a>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1495107334309-fcf20504a5ab?w=700&q=80" alt="Zero budget farming" style="border-radius:var(--radius-lg);width:100%;height:420px;object-fit:cover;border:1px solid var(--glass-border);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ORGANIC PROCESS ════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Step by Step</div>
+        <h2 class="section-title">How to Transition to<br><span class="text-neon">Organic Farming</span></h2>
+      </div>
+      <div class="organic-process stagger">
+        <div class="organic-step">
+          <div class="organic-step-num">01</div>
+          <div class="organic-step-icon">📋</div>
+          <div class="organic-step-title">Plan & Certify</div>
+          <div class="organic-step-text">Start with a 3-year organic conversion plan. Apply for PGS-India or NPOP certification. No chemical inputs during transition.</div>
+        </div>
+        <div class="organic-step">
+          <div class="organic-step-num">02</div>
+          <div class="organic-step-icon">🌍</div>
+          <div class="organic-step-title">Rebuild Soil</div>
+          <div class="organic-step-text">Apply vermicompost, farmyard manure, and green manure. Increase organic matter to >3% over 2 seasons.</div>
+        </div>
+        <div class="organic-step">
+          <div class="organic-step-num">03</div>
+          <div class="organic-step-icon">🪱</div>
+          <div class="organic-step-title">Biological Protection</div>
+          <div class="organic-step-text">Set up trap crops, use neem-based sprays, introduce beneficial insects, and apply Trichoderma for disease control.</div>
+        </div>
+        <div class="organic-step">
+          <div class="organic-step-num">04</div>
+          <div class="organic-step-icon">🏪</div>
+          <div class="organic-step-title">Market & Sell Premium</div>
+          <div class="organic-step-text">Connect to organic mandis, direct consumer groups, export channels and e-commerce platforms for 20–40% better prices.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NATURAL FERTILIZERS ════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Inputs</div>
+        <h2 class="section-title">Natural Fertilizers<br>& Bio-Inputs</h2>
+      </div>
+      <div class="fertilizer-grid stagger">
+        <div class="fert-card">
+          <div class="fert-icon">🪱</div>
+          <div class="fert-name">Vermicompost</div>
+          <div class="fert-text">Earthworm-processed organic waste. Improves soil texture, water retention and microbial diversity rapidly.</div>
+          <div class="fert-npk">NPK: 2.5–3.0% each</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🐄</div>
+          <div class="fert-name">Farmyard Manure (FYM)</div>
+          <div class="fert-text">Decomposed dung, urine and straw. Most widely available organic input. Excellent soil conditioner.</div>
+          <div class="fert-npk">NPK: 0.5–0.6–0.5%</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🌿</div>
+          <div class="fert-name">Jeevamrit</div>
+          <div class="fert-text">ZBNF liquid biofertilizer made from cow dung, urine, jaggery and pulse flour. Activates soil biology rapidly.</div>
+          <div class="fert-npk">Microbial activator</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🫘</div>
+          <div class="fert-name">Neem Cake</div>
+          <div class="fert-text">Neem seed residue after oil extraction. Provides nitrogen, repels nematodes and soil insects organically.</div>
+          <div class="fert-npk">N: 5.2% + pest control</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🦠</div>
+          <div class="fert-name">Rhizobium Biofertilizer</div>
+          <div class="fert-text">Nitrogen-fixing bacteria for pulse crops. A single seed treatment fixes up to 150 kg N/ha — eliminating nitrogen fertilizer.</div>
+          <div class="fert-npk">Fixes 80–150 kg N/ha</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🌳</div>
+          <div class="fert-name">Panchagavya</div>
+          <div class="fert-text">Ancient Indian biostimulant made from 5 cow products. Used as foliar spray to improve growth, immunity and yield.</div>
+          <div class="fert-npk">Growth promoter</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🍌</div>
+          <div class="fert-name">Banana Pseudostem Sap</div>
+          <div class="fert-text">Rich in potassium and micronutrients. Applied as foliar spray for fruiting crops and high-demand vegetables.</div>
+          <div class="fert-npk">K-rich micronutrient</div>
+        </div>
+        <div class="fert-card">
+          <div class="fert-icon">🌾</div>
+          <div class="fert-name">Green Manure Crops</div>
+          <div class="fert-text">Dhaincha, sunhemp, and sesbania grown and incorporated. Add 60–80 kg N/ha and improve soil texture dramatically.</div>
+          <div class="fert-npk">N: 60–80 kg/ha</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CERTIFICATION ══════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="glass-card" style="background:linear-gradient(135deg,rgba(26,92,52,0.3),rgba(45,140,85,0.15));">
+        <div class="text-center" style="max-width:700px;margin:0 auto;">
+          <div class="section-label" style="justify-content:center;">Go Certified</div>
+          <h2 class="section-title">Get Your Organic Certification</h2>
+          <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:2rem;">India has two national organic certification systems. Both unlock premium market access, export opportunities, and government subsidies.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;text-align:left;margin-bottom:2rem;">
+            <div class="glass-card">
+              <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--green-neon);">PGS-India</div>
+              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">Participatory Guarantee System. Community-based, low-cost certification for small farmers. Best for domestic markets and local branding.</div>
+            </div>
+            <div class="glass-card">
+              <div style="font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;color:var(--green-neon);">NPOP Certified</div>
+              <div style="font-size:0.85rem;color:rgba(255,255,255,0.6);line-height:1.7;">National Programme for Organic Production. India's official certification for export markets. Recognised by EU, US and Japan.</div>
+            </div>
+          </div>
+          <a href="schemes.html" class="btn-primary-glow"><span>🏛️</span><span>View Certification Schemes</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

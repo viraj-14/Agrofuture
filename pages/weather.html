@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .dashboard-grid{display:grid;grid-template-columns:2fr 1fr;gap:2rem;}
+    .main-weather{background:linear-gradient(135deg,rgba(26,92,52,0.5),rgba(10,46,26,0.8));border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2.5rem;backdrop-filter:blur(20px);}
+    .main-temp{font-family:var(--font-display);font-size:6rem;font-weight:800;letter-spacing:-5px;line-height:1;color:white;}
+    .main-icon{font-size:5rem;margin-bottom:1rem;}
+    .main-city{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--green-neon);}
+    .main-date{font-size:0.88rem;color:rgba(255,255,255,0.5);margin-top:0.3rem;}
+    .main-desc{font-size:1.1rem;color:rgba(255,255,255,0.75);margin:1rem 0;}
+    .main-details{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;padding-top:2rem;border-top:1px solid var(--glass-border);}
+    .main-detail{text-align:center;}
+    .main-detail-icon{font-size:1.5rem;margin-bottom:0.3rem;}
+    .main-detail-value{font-family:var(--font-display);font-weight:700;font-size:1.2rem;color:var(--green-neon);}
+    .main-detail-label{font-size:0.72rem;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.06em;}
+    .side-panel{display:flex;flex-direction:column;gap:1.2rem;}
+    .forecast-list{display:flex;flex-direction:column;gap:0.8rem;}
+    .forecast-item{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:12px;padding:1rem 1.2rem;display:flex;align-items:center;justify-content:space-between;transition:var(--transition);}
+    .forecast-item:hover{border-color:rgba(62,255,138,0.25);}
+    .forecast-day{font-weight:600;font-size:0.9rem;}
+    .forecast-icon{font-size:1.5rem;}
+    .forecast-temps{text-align:right;}
+    .forecast-high{font-family:var(--font-display);font-weight:700;color:var(--green-neon);}
+    .forecast-low{font-size:0.8rem;color:rgba(255,255,255,0.4);}
+    .agri-alerts{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+    .alert-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.5rem;transition:var(--transition);}
+    .alert-card:hover{transform:translateY(-4px);border-color:rgba(62,255,138,0.3);}
+    .alert-card.warning{border-left:3px solid #FFD700;}
+    .alert-card.good{border-left:3px solid var(--green-neon);}
+    .alert-card.danger{border-left:3px solid #ff6b6b;}
+    .alert-icon{font-size:2rem;margin-bottom:0.6rem;}
+    .alert-title{font-family:var(--font-display);font-weight:700;font-size:0.95rem;margin-bottom:0.3rem;}
+    .alert-text{font-size:0.82rem;color:rgba(255,255,255,0.55);line-height:1.6;}
+    .chart-container{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;}
+    .bar-chart{display:flex;align-items:flex-end;gap:0.5rem;height:140px;margin-top:1.5rem;}
+    .bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:0.5rem;}
+    .bar{width:100%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,var(--green-neon),var(--green-mid));min-height:4px;transition:height 1.5s ease;}
+    .bar-label{font-size:0.72rem;color:rgba(255,255,255,0.45);}
+    .bar-value{font-size:0.75rem;font-weight:600;color:var(--green-neon);}
+    .city-tabs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2rem;}
+    .city-tab{background:var(--glass-bg);border:1px solid var(--glass-border);color:rgba(255,255,255,0.65);border-radius:50px;padding:0.45rem 1.1rem;font-size:0.85rem;cursor:pointer;transition:var(--transition);}
+    .city-tab:hover,.city-tab.active{background:var(--green-mid);border-color:var(--green-mid);color:white;}
+    @media(max-width:1000px){.dashboard-grid{grid-template-columns:1fr;}.agri-alerts{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.main-details{grid-template-columns:1fr 1fr;}.agri-alerts{grid-template-columns:1fr;}.main-temp{font-size:4rem;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;min-height:45vh;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1504608524841-42584120d693?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Weather Dashboard</span></div>
+      <div class="section-label">Live Weather</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Weather<br><span class="text-neon">Dashboard</span></h1>
+    </div>
+  </section>
+
+  <!-- ══ CITY TABS ══════════════════════════════════════════════ -->
+  <section style="padding:2rem 2rem 0;">
+    <div style="max-width:1280px;margin:0 auto;">
+      <div class="city-tabs reveal">
+        <button class="city-tab active" data-city="pune">📍 Pune</button>
+        <button class="city-tab" data-city="delhi">🏙️ Delhi</button>
+        <button class="city-tab" data-city="mumbai">🌊 Mumbai</button>
+        <button class="city-tab" data-city="bangalore">🌳 Bangalore</button>
+        <button class="city-tab" data-city="lucknow">🕌 Lucknow</button>
+        <button class="city-tab" data-city="patna">🌾 Patna</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MAIN DASHBOARD ════════════════════════════════════════ -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="section-inner">
+      <div class="dashboard-grid reveal">
+
+        <!-- Main Card -->
+        <div class="main-weather">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem;">
+            <div>
+              <div class="main-icon" id="main-icon">⛅</div>
+              <div class="main-temp" id="main-temp">28<span style="font-size:2.5rem;color:rgba(255,255,255,0.5);">°C</span></div>
+              <div class="main-desc" id="main-desc">Partly Cloudy — Ideal for field work</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="main-city" id="main-city">Pune, Maharashtra</div>
+              <div class="main-date" id="weather-time">Loading…</div>
+              <div style="margin-top:1rem;background:rgba(62,255,138,0.1);border:1px solid rgba(62,255,138,0.25);border-radius:8px;padding:0.5rem 1rem;font-size:0.8rem;color:var(--green-neon);">🌾 Good day to irrigate</div>
+            </div>
+          </div>
+          <div class="main-details">
+            <div class="main-detail"><div class="main-detail-icon">💧</div><div class="main-detail-value" id="stat-humidity">62%</div><div class="main-detail-label">Humidity</div></div>
+            <div class="main-detail"><div class="main-detail-icon">💨</div><div class="main-detail-value" id="stat-wind">14 km/h</div><div class="main-detail-label">Wind Speed</div></div>
+            <div class="main-detail"><div class="main-detail-icon">☔</div><div class="main-detail-value" id="stat-rain">18%</div><div class="main-detail-label">Rain Chance</div></div>
+            <div class="main-detail"><div class="main-detail-icon">🌡️</div><div class="main-detail-value" id="stat-feels">26°C</div><div class="main-detail-label">Feels Like</div></div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="side-panel">
+          <div class="glass-card" style="padding:1.5rem;">
+            <div style="font-family:var(--font-display);font-weight:700;margin-bottom:1rem;font-size:0.95rem;color:var(--green-neon);">📅 5-Day Forecast</div>
+            <div class="forecast-list" id="forecast-list">
+              <div class="forecast-item"><div><div class="forecast-day">Today</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Partly Cloudy</div></div><div class="forecast-icon">⛅</div><div class="forecast-temps"><div class="forecast-high">30°</div><div class="forecast-low">22°</div></div></div>
+              <div class="forecast-item"><div><div class="forecast-day">Tomorrow</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Sunny</div></div><div class="forecast-icon">☀️</div><div class="forecast-temps"><div class="forecast-high">33°</div><div class="forecast-low">24°</div></div></div>
+              <div class="forecast-item"><div><div class="forecast-day">Wednesday</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Light Rain</div></div><div class="forecast-icon">🌦️</div><div class="forecast-temps"><div class="forecast-high">27°</div><div class="forecast-low">21°</div></div></div>
+              <div class="forecast-item"><div><div class="forecast-day">Thursday</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Overcast</div></div><div class="forecast-icon">☁️</div><div class="forecast-temps"><div class="forecast-high">26°</div><div class="forecast-low">20°</div></div></div>
+              <div class="forecast-item"><div><div class="forecast-day">Friday</div><div style="font-size:0.75rem;color:rgba(255,255,255,0.4);">Thunderstorm</div></div><div class="forecast-icon">⛈️</div><div class="forecast-temps"><div class="forecast-high">24°</div><div class="forecast-low">19°</div></div></div>
+            </div>
+          </div>
+          <div class="glass-card" style="padding:1.5rem;">
+            <div style="font-family:var(--font-display);font-weight:700;margin-bottom:1rem;font-size:0.95rem;color:var(--green-neon);">🌙 Sun & Moon</div>
+            <div style="display:flex;justify-content:space-between;font-size:0.88rem;">
+              <div><div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Sunrise</div><div style="font-weight:600;margin-top:0.2rem;">6:02 AM</div></div>
+              <div style="text-align:center;"><div style="font-size:2rem;">☀️</div></div>
+              <div style="text-align:right;"><div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Sunset</div><div style="font-weight:600;margin-top:0.2rem;">7:24 PM</div></div>
+            </div>
+            <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid var(--glass-border);display:flex;justify-content:space-between;font-size:0.88rem;">
+              <div><div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">UV Index</div><div style="font-weight:600;color:#FFD700;margin-top:0.2rem;">7 — High</div></div>
+              <div style="text-align:right;"><div style="color:rgba(255,255,255,0.4);font-size:0.75rem;">Visibility</div><div style="font-weight:600;margin-top:0.2rem;">9.5 km</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /dashboard-grid -->
+
+      <!-- ── RAINFALL CHART ─────────────────────────────────── -->
+      <div class="chart-container reveal" style="margin-top:2rem;">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+          <div>
+            <div class="section-label" style="margin-bottom:0.3rem;">Monthly Rainfall</div>
+            <div style="font-family:var(--font-display);font-weight:700;font-size:1.2rem;">Rainfall Distribution 2025 — Pune</div>
+          </div>
+          <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);">mm per month</div>
+        </div>
+        <div class="bar-chart" id="rainfall-chart">
+          <!-- Bars injected by JS -->
+        </div>
+      </div>
+
+      <!-- ── AGRI WEATHER ALERTS ─────────────────────────────── -->
+      <div style="margin-top:3rem;">
+        <div class="text-center mb-3 reveal">
+          <div class="section-label">Farm Advisory</div>
+          <h2 class="section-title">Today's Agricultural Alerts</h2>
+        </div>
+        <div class="agri-alerts stagger">
+          <div class="alert-card good">
+            <div class="alert-icon">✅</div>
+            <div class="alert-title">Good Spraying Conditions</div>
+            <div class="alert-text">Wind speed at 14 km/h. No rain expected for next 6 hours. Ideal window for pesticide or fertilizer spray application.</div>
+          </div>
+          <div class="alert-card warning">
+            <div class="alert-icon">⚠️</div>
+            <div class="alert-title">High UV Index Alert</div>
+            <div class="alert-text">UV index at 7 (High). Limit outdoor work between 11AM–3PM. Ensure adequate irrigation to prevent heat stress in crops.</div>
+          </div>
+          <div class="alert-card danger">
+            <div class="alert-icon">⛈️</div>
+            <div class="alert-title">Thunderstorm Warning — Fri</div>
+            <div class="alert-text">Heavy rain and strong winds expected Friday. Complete all harvesting by Thursday. Secure loose materials and reinforce crop covers.</div>
+          </div>
+          <div class="alert-card good">
+            <div class="alert-icon">💧</div>
+            <div class="alert-title">Reduce Irrigation Today</div>
+            <div class="alert-text">Soil moisture at optimal 68% after last night's dew. Skip afternoon irrigation for most vegetable crops today to prevent waterlogging.</div>
+          </div>
+          <div class="alert-card warning">
+            <div class="alert-icon">🌡️</div>
+            <div class="alert-title">Heat Advisory — Next 3 Days</div>
+            <div class="alert-text">Temperatures above 32°C forecast for Monday–Wednesday. Shade-net recommended for nurseries and delicate seedlings.</div>
+          </div>
+          <div class="alert-card good">
+            <div class="alert-icon">🌱</div>
+            <div class="alert-title">Ideal Sowing Window</div>
+            <div class="alert-text">Soil temperature at 24°C with adequate moisture — perfect for sowing cucumber, bottle gourd, and other summer vegetables this week.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── WEATHER CARDS GRID ──────────────────────────────── -->
+      <div style="margin-top:3rem;">
+        <div class="text-center mb-3 reveal">
+          <div class="section-label">Regional Overview</div>
+          <h2 class="section-title">India's Major Farming Zones</h2>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;" class="stagger">
+          <div class="weather-card"><div class="weather-icon">☀️</div><div class="main-city" style="font-size:1rem;">Delhi NCR</div><div class="weather-temp">35°C</div><div class="weather-desc">Clear & Hot</div><div class="weather-detail"><div class="weather-detail-item"><div class="weather-detail-label">Humidity</div><div class="weather-detail-value">40%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Rain</div><div class="weather-detail-value">5%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Wind</div><div class="weather-detail-value">20 km/h</div></div></div></div>
+          <div class="weather-card"><div class="weather-icon">🌦️</div><div class="main-city" style="font-size:1rem;">Mumbai</div><div class="weather-temp">30°C</div><div class="weather-desc">Humid & Showery</div><div class="weather-detail"><div class="weather-detail-item"><div class="weather-detail-label">Humidity</div><div class="weather-detail-value">88%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Rain</div><div class="weather-detail-value">55%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Wind</div><div class="weather-detail-value">22 km/h</div></div></div></div>
+          <div class="weather-card"><div class="weather-icon">⛅</div><div class="main-city" style="font-size:1rem;">Bangalore</div><div class="weather-temp">24°C</div><div class="weather-desc">Partly Cloudy</div><div class="weather-detail"><div class="weather-detail-item"><div class="weather-detail-label">Humidity</div><div class="weather-detail-value">72%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Rain</div><div class="weather-detail-value">25%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Wind</div><div class="weather-detail-value">10 km/h</div></div></div></div>
+          <div class="weather-card"><div class="weather-icon">🌩️</div><div class="main-city" style="font-size:1rem;">Patna</div><div class="weather-temp">31°C</div><div class="weather-desc">Thundery Showers</div><div class="weather-detail"><div class="weather-detail-item"><div class="weather-detail-label">Humidity</div><div class="weather-detail-value">78%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Rain</div><div class="weather-detail-value">70%</div></div><div class="weather-detail-item"><div class="weather-detail-label">Wind</div><div class="weather-detail-value">18 km/h</div></div></div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ── Rainfall Bar Chart ─────────────────────────────────────
+    const rainfallData = [
+      {month:'Jan',mm:5},  {month:'Feb',mm:8},  {month:'Mar',mm:12},
+      {month:'Apr',mm:18}, {month:'May',mm:30}, {month:'Jun',mm:112},
+      {month:'Jul',mm:185},{month:'Aug',mm:168},{month:'Sep',mm:95},
+      {month:'Oct',mm:42}, {month:'Nov',mm:18}, {month:'Dec',mm:8}
+    ];
+    const max = Math.max(...rainfallData.map(d=>d.mm));
+    const chart = document.getElementById('rainfall-chart');
+    if(chart){
+      chart.innerHTML = rainfallData.map(d=>`
+        <div class="bar-wrap">
+          <div class="bar-value">${d.mm}</div>
+          <div class="bar" style="height:${(d.mm/max)*130}px;"></div>
+          <div class="bar-label">${d.month}</div>
+        </div>`).join('');
+    }
+
+    // ── City Switcher ───────────────────────────────────────────
+    const cities = {
+      pune:      {city:'Pune, Maharashtra',     icon:'⛅', temp:'28', desc:'Partly Cloudy — Ideal for field work',    humidity:'62%',wind:'14 km/h',rain:'18%',feels:'26°C'},
+      delhi:     {city:'Delhi, NCT',            icon:'☀️', temp:'35', desc:'Sunny & Hot — Avoid midday field work',   humidity:'40%',wind:'20 km/h',rain:'5%', feels:'38°C'},
+      mumbai:    {city:'Mumbai, Maharashtra',   icon:'🌦️', temp:'30', desc:'Humid Showers — Delay spray operations',  humidity:'88%',wind:'22 km/h',rain:'55%',feels:'34°C'},
+      bangalore: {city:'Bangalore, Karnataka',  icon:'⛅', temp:'24', desc:'Pleasant — Good for all farming activities',humidity:'72%',wind:'10 km/h',rain:'25%',feels:'23°C'},
+      lucknow:   {city:'Lucknow, UP',           icon:'🌤️', temp:'32', desc:'Mostly Sunny — Monitor irrigation needs', humidity:'55%',wind:'16 km/h',rain:'10%',feels:'30°C'},
+      patna:     {city:'Patna, Bihar',          icon:'🌩️', temp:'31', desc:'Thundery Showers — Postpone harvesting',  humidity:'78%',wind:'18 km/h',rain:'70%',feels:'33°C'},
+    };
+    document.querySelectorAll('.city-tab').forEach(tab=>{
+      tab.addEventListener('click',()=>{
+        document.querySelectorAll('.city-tab').forEach(t=>t.classList.remove('active'));
+        tab.classList.add('active');
+        const d = cities[tab.dataset.city];
+        document.getElementById('main-icon').textContent = d.icon;
+        document.getElementById('main-temp').innerHTML = d.temp+'<span style="font-size:2.5rem;color:rgba(255,255,255,0.5);">°C</span>';
+        document.getElementById('main-city').textContent = d.city;
+        document.getElementById('main-desc').textContent = d.desc;
+        document.getElementById('stat-humidity').textContent = d.humidity;
+        document.getElementById('stat-wind').textContent = d.wind;
+        document.getElementById('stat-rain').textContent = d.rain;
+        document.getElementById('stat-feels').textContent = d.feels;
+      });
+    });
+  </script>
+</body>
+</html>

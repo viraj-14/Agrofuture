@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Agriculture — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .method-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .method-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--transition);}
+    .method-card:hover{transform:translateY(-6px);border-color:rgba(62,255,138,0.3);}
+    .method-img{height:180px;background-size:cover;background-position:center;position:relative;}
+    .method-body{padding:1.5rem;}
+    .method-title{font-family:var(--font-display);font-weight:700;font-size:1.05rem;margin-bottom:0.6rem;}
+    .method-text{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;}
+    @media(max-width:900px){.method-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.method-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ PAGE HERO ═══════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1523348837708-15d4a09cfac2?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Learn Agriculture</span></div>
+      <div class="section-label">Education Hub</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Learn<br><span class="text-neon">Agriculture</span></h1>
+      <p class="section-sub">From beginner farmer to modern agriculture expert — everything you need to know, all in one place.</p>
+    </div>
+  </section>
+
+  <!-- ══ INTRO ════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="col-2 reveal">
+        <div>
+          <div class="section-label">What is Agriculture?</div>
+          <h2 class="section-title">The Science &<br>Art of Farming</h2>
+          <p class="section-sub">Agriculture is the practice of cultivating plants, raising livestock and other practices for food, fiber, medicine and other products used to sustain and enhance life. Modern agriculture uses scientific methods and technology to improve efficiency.</p>
+          <div class="info-box">
+            <div class="info-box-title">🌟 Did You Know?</div>
+            <p>India has 140.1 million hectares of arable land — 2nd largest in the world — yet yields remain below global averages due to outdated methods. Smart agriculture can change this.</p>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=700&q=80" alt="Modern farming" style="border-radius:var(--radius-lg);width:100%;height:420px;object-fit:cover;border:1px solid var(--glass-border);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TIMELINE: FARMING PROCESS ════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Step by Step</div>
+        <h2 class="section-title">The Farming Process</h2>
+        <p class="section-sub" style="margin:0 auto;">A complete journey from planning to harvest, simplified for every farmer.</p>
+      </div>
+      <div class="col-2-3 reveal">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 01</div>
+            <div class="timeline-title">Land Selection & Preparation</div>
+            <div class="timeline-text">Choose the right soil type, test pH levels, and prepare the land through plowing, leveling and bed formation. Ideal pH for most crops is 6.0–7.5.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 02</div>
+            <div class="timeline-title">Seed Selection & Sowing</div>
+            <div class="timeline-text">Select certified, high-yield seeds suitable for your region and season. Use seed treatment to protect against early disease. Sow at the right depth and spacing.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 03</div>
+            <div class="timeline-title">Irrigation & Water Management</div>
+            <div class="timeline-text">Apply water at critical growth stages. Drip irrigation reduces water consumption by 40–50% compared to flood irrigation. Monitor soil moisture regularly.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 04</div>
+            <div class="timeline-title">Nutrient & Fertilizer Management</div>
+            <div class="timeline-text">Follow soil test recommendations. Apply NPK fertilizers in splits — basal dose at sowing and top dressing at active growth stages. Integrate organic matter.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 05</div>
+            <div class="timeline-title">Pest & Disease Control</div>
+            <div class="timeline-text">Follow IPM — Integrated Pest Management. Monitor regularly, use bio-control agents first, then targeted chemical applications only when thresholds are crossed.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-step">Step 06</div>
+            <div class="timeline-title">Harvesting & Post-Harvest</div>
+            <div class="timeline-text">Harvest at optimal maturity. Proper drying, cleaning, grading and storage in ventilated structures reduces post-harvest losses from 30% to below 5%.</div>
+          </div>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=700&q=80" alt="Farming timeline" style="border-radius:var(--radius-lg);width:100%;height:600px;object-fit:cover;position:sticky;top:100px;border:1px solid var(--glass-border);" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MODERN METHODS ════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Modern Methods</div>
+        <h2 class="section-title">Future of Farming<br>is <span class="text-neon">Smart</span></h2>
+      </div>
+      <div class="method-grid stagger">
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1569396116180-210c182bedb8?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">Technology</div>
+            <div class="method-title">Precision Agriculture</div>
+            <div class="method-text">Using GPS, drones and IoT sensors to apply water, seeds and chemicals precisely where and when needed — reducing waste by up to 60%.</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1581092162384-8987c1d64718?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">Innovation</div>
+            <div class="method-title">Hydroponics & Aeroponics</div>
+            <div class="method-text">Soil-free growing systems that use up to 90% less water. Ideal for urban farming, greenhouses and regions with poor soil quality.</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">AI & Data</div>
+            <div class="method-title">AI Crop Disease Detection</div>
+            <div class="method-text">Deep learning models analyze crop images and identify diseases with 94% accuracy — enabling early intervention before outbreak spreads.</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1500076656116-558758c991c1?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">Conservation</div>
+            <div class="method-title">Conservation Agriculture</div>
+            <div class="method-text">Minimum tillage, crop rotation and permanent soil cover practices that rebuild soil health and organic matter over time.</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">Sustainability</div>
+            <div class="method-title">Integrated Farming</div>
+            <div class="method-text">Combining crop farming with animal husbandry, fish farming and agroforestry to create multiple income streams on the same land.</div>
+          </div>
+        </div>
+        <div class="method-card">
+          <div class="method-img" style="background-image:url('https://images.unsplash.com/photo-1535379453347-1ffd615e2e08?w=600&q=80');"></div>
+          <div class="method-body">
+            <div class="content-card-tag">Digital</div>
+            <div class="method-title">Digital Farm Management</div>
+            <div class="method-text">Mobile apps and cloud platforms for record-keeping, input management, expense tracking and yield forecasting for every farmer.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ EDUCATION SECTION ══════════════════════════════════ -->
+  <section id="education" class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Farmer Education</div>
+        <h2 class="section-title">Learn. Grow. Thrive.</h2>
+      </div>
+      <div class="features-strip stagger">
+        <div class="feature-item">
+          <div class="feature-icon">🎓</div>
+          <div class="feature-title">Online Courses</div>
+          <div class="feature-text">50+ free online courses on soil science, crop protection, water management and agribusiness — available in Hindi and English.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📱</div>
+          <div class="feature-title">Mobile Learning</div>
+          <div class="feature-text">Learn at your own pace, on any device. Video lessons, quizzes and certificates downloadable even offline in low-connectivity areas.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">👨‍🌾</div>
+          <div class="feature-title">Expert Mentorship</div>
+          <div class="feature-text">Connect with agricultural scientists and experienced farmers through our 1-on-1 mentorship and live Q&A sessions every week.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FAQ ══════════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="col-2 reveal">
+        <div>
+          <div class="section-label">FAQ</div>
+          <h2 class="section-title">Common Farming Questions</h2>
+          <p class="section-sub">Answers to the questions every beginner farmer asks.</p>
+        </div>
+        <div>
+          <div class="faq-item">
+            <button class="faq-question">What crops are best for a beginner farmer? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">For beginners, start with easy-to-grow crops like tomatoes, leafy vegetables (spinach, coriander), beans, and radish. These have short growing seasons, high demand, and are forgiving of minor mistakes.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How often should I water my crops? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">Watering frequency depends on the crop, soil type and climate. A general rule: check if the top 2 inches of soil are dry. Most vegetables need watering every 2–3 days. Drip irrigation systems automate this perfectly.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">How do I know if my soil is healthy? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">Healthy soil is dark, loose, and holds moisture without becoming waterlogged. It smells earthy (petrichor), has earthworms, and crumbles easily. Get a soil test from your KVK or agriculture department for accurate results.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">What is the ideal time to start farming in India? <span class="faq-icon">+</span></button>
+            <div class="faq-answer">India has two main farming seasons: Kharif (June–November, monsoon crops like rice, maize, cotton) and Rabi (October–March, winter crops like wheat, mustard, gram). Start planning 4–6 weeks before the season begins.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

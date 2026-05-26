@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesticides & Fertilizers — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .pest-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .pest-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;transition:var(--transition);position:relative;overflow:hidden;}
+    .pest-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,linear-gradient(90deg,var(--green-mid),var(--green-neon)));}
+    .pest-card:hover{transform:translateY(-6px);border-color:rgba(62,255,138,0.3);}
+    .pest-icon{font-size:2.5rem;margin-bottom:1rem;}
+    .pest-title{font-family:var(--font-display);font-weight:700;font-size:1.1rem;margin-bottom:0.6rem;}
+    .pest-text{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;}
+    .pest-list{margin-top:1rem;padding-left:0;}
+    .pest-list li{font-size:0.85rem;color:rgba(255,255,255,0.55);padding:0.3rem 0;padding-left:1.2rem;position:relative;}
+    .pest-list li::before{content:'→';position:absolute;left:0;color:var(--green-neon);}
+    .safety-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .safety-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:var(--transition);}
+    .safety-card:hover{border-color:rgba(62,255,138,0.3);transform:translateY(-4px);}
+    .safety-icon{font-size:2.2rem;margin-bottom:0.8rem;}
+    .safety-title{font-family:var(--font-display);font-weight:700;font-size:0.95rem;margin-bottom:0.4rem;}
+    .safety-text{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6;}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    .compare-col{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;}
+    .compare-col.organic{border-color:rgba(62,255,138,0.25);}
+    .compare-col.chemical{border-color:rgba(255,100,100,0.2);}
+    .compare-header{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.7rem;}
+    .compare-row{display:flex;justify-content:space-between;align-items:center;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.88rem;}
+    .compare-row:last-child{border-bottom:none;}
+    .compare-label{color:rgba(255,255,255,0.55);}
+    .compare-val{font-weight:600;color:var(--green-neon);}
+    .compare-val.red{color:#ff6b6b;}
+    @media(max-width:900px){.pest-type-grid{grid-template-columns:1fr 1fr;}.safety-grid{grid-template-columns:1fr 1fr;}.compare-grid{grid-template-columns:1fr;}}
+    @media(max-width:600px){.pest-type-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1592419044706-39796d40f98c?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Pesticides & Fertilizers</span></div>
+      <div class="section-label">Crop Protection</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Pesticides &<br><span class="text-neon">Fertilizers</span></h1>
+      <p class="section-sub">Smart, safe, and effective crop protection — from organic alternatives to chemical management done right.</p>
+    </div>
+  </section>
+
+  <!-- ══ TYPES OF PESTICIDES ════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Classification</div>
+        <h2 class="section-title">Types of Pesticides</h2>
+        <p class="section-sub" style="margin:0 auto;">Understanding the different categories helps choose the right product at the right time.</p>
+      </div>
+      <div class="pest-type-grid stagger">
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#4eca82,#39ff8a);">
+          <div class="pest-icon">🦟</div>
+          <div class="pest-title">Insecticides</div>
+          <div class="pest-text">Used to control insect pests that damage crops. Available in contact, systemic and fumigant forms.</div>
+          <ul class="pest-list">
+            <li>Chlorpyrifos — broad-spectrum</li>
+            <li>Imidacloprid — systemic (sucking pests)</li>
+            <li>Spinosad — bio-based insecticide</li>
+            <li>Malathion — fruit & vegetable pests</li>
+          </ul>
+        </div>
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#c49a6c,#f4c97a);">
+          <div class="pest-icon">🍄</div>
+          <div class="pest-title">Fungicides</div>
+          <div class="pest-text">Prevent and treat fungal diseases like blight, rust, mildew and damping-off in crops.</div>
+          <ul class="pest-list">
+            <li>Mancozeb — protectant fungicide</li>
+            <li>Propiconazole — systemic action</li>
+            <li>Copper oxychloride — organic option</li>
+            <li>Carbendazim — seed treatment</li>
+          </ul>
+        </div>
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#1a5c34,#4eca82);">
+          <div class="pest-icon">🌿</div>
+          <div class="pest-title">Herbicides</div>
+          <div class="pest-text">Control weeds that compete with crops for nutrients, water, light and space.</div>
+          <ul class="pest-list">
+            <li>Glyphosate — non-selective, post-emergence</li>
+            <li>Atrazine — pre-emergence corn weeds</li>
+            <li>2,4-D — broadleaf weed control</li>
+            <li>Pendimethalin — pre-emergence</li>
+          </ul>
+        </div>
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#6b4226,#c49a6c);">
+          <div class="pest-icon">🐀</div>
+          <div class="pest-title">Rodenticides</div>
+          <div class="pest-text">Used to control rats and rodents that destroy stored grain and field crops.</div>
+          <ul class="pest-list">
+            <li>Zinc phosphide — acute rodenticide</li>
+            <li>Bromadiolone — anticoagulant</li>
+            <li>Brodifacoum — second-generation</li>
+            <li>Aluminium phosphide — grain storage</li>
+          </ul>
+        </div>
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#2d8c55,#39ff8a);">
+          <div class="pest-icon">🪱</div>
+          <div class="pest-title">Nematicides</div>
+          <div class="pest-text">Protect roots from soil nematodes that reduce plant health and cause massive yield loss.</div>
+          <ul class="pest-list">
+            <li>Carbofuran — systemic nematicide</li>
+            <li>Fenamiphos — soil drench</li>
+            <li>Paecilomyces — bio-nematicide</li>
+            <li>Dazomet — soil fumigant</li>
+          </ul>
+        </div>
+        <div class="pest-card" style="--card-accent:linear-gradient(90deg,#39ff8a,#4eca82);">
+          <div class="pest-icon">🌱</div>
+          <div class="pest-title">Biopesticides</div>
+          <div class="pest-text">Derived from natural organisms — safer for humans, environment, and beneficial insects.</div>
+          <ul class="pest-list">
+            <li>Bacillus thuringiensis (Bt) — lepidoptera</li>
+            <li>Neem oil — broad-spectrum organic</li>
+            <li>Trichoderma — fungal bio-control</li>
+            <li>Beauveria bassiana — insect pathogen</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FERTILIZER TABLE ═══════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="reveal mb-3">
+        <div class="section-label">Nutrients</div>
+        <h2 class="section-title">Fertilizer Reference Guide</h2>
+      </div>
+      <div class="glass-card reveal" style="overflow-x:auto;">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Fertilizer</th>
+              <th>Nutrient Content</th>
+              <th>Best For</th>
+              <th>Application Stage</th>
+              <th>Dosage (kg/acre)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Urea</td><td>46% Nitrogen (N)</td><td>All crops, leafy vegetables</td><td>Basal + top dressing</td><td>25–50</td></tr>
+            <tr><td>DAP (Di-ammonium Phosphate)</td><td>18% N + 46% P₂O₅</td><td>Oilseeds, pulses</td><td>At sowing (basal)</td><td>20–25</td></tr>
+            <tr><td>MOP (Muriate of Potash)</td><td>60% K₂O</td><td>Fruits, potato, sugarcane</td><td>Basal + split</td><td>10–20</td></tr>
+            <tr><td>SSP (Single Super Phosphate)</td><td>16% P₂O₅ + 11% S</td><td>Pulses, groundnut</td><td>Basal application</td><td>50–75</td></tr>
+            <tr><td>Ammonium Sulphate</td><td>21% N + 24% S</td><td>Paddy, oilseeds</td><td>Split application</td><td>40–60</td></tr>
+            <tr><td>Vermicompost</td><td>2–3% N, P, K + micronutrients</td><td>All crops (organic)</td><td>Land prep + top dressing</td><td>400–800</td></tr>
+            <tr><td>Neem Cake</td><td>5.2% N + pest repellent</td><td>Vegetables, paddy</td><td>Basal application</td><td>80–100</td></tr>
+            <tr><td>Zinc Sulphate</td><td>21–33% Zn + 10% S</td><td>Rice, wheat (deficient soils)</td><td>Basal or foliar spray</td><td>4–8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ORGANIC vs CHEMICAL ═══════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Comparison</div>
+        <h2 class="section-title">Organic vs <span class="text-neon">Chemical</span></h2>
+        <p class="section-sub" style="margin:0 auto;">Make informed decisions for your farm's long-term productivity and sustainability.</p>
+      </div>
+      <div class="compare-grid reveal">
+        <div class="compare-col organic">
+          <div class="compare-header">🍃 Organic Pesticides</div>
+          <div class="compare-row"><span class="compare-label">Safety to Humans</span><span class="compare-val">✓ Very Safe</span></div>
+          <div class="compare-row"><span class="compare-label">Environmental Impact</span><span class="compare-val">✓ Minimal</span></div>
+          <div class="compare-row"><span class="compare-label">Soil Health</span><span class="compare-val">✓ Improves</span></div>
+          <div class="compare-row"><span class="compare-label">Residue on Produce</span><span class="compare-val">✓ Negligible</span></div>
+          <div class="compare-row"><span class="compare-label">Speed of Action</span><span class="compare-val" style="color:#f4c97a;">⚡ Slower</span></div>
+          <div class="compare-row"><span class="compare-label">Cost</span><span class="compare-val" style="color:#f4c97a;">💰 Higher</span></div>
+          <div class="compare-row"><span class="compare-label">Shelf Life</span><span class="compare-val" style="color:#f4c97a;">⏱ Shorter</span></div>
+          <div class="compare-row"><span class="compare-label">Market Premium</span><span class="compare-val">✓ 20–40% higher</span></div>
+        </div>
+        <div class="compare-col chemical">
+          <div class="compare-header">⚗️ Chemical Pesticides</div>
+          <div class="compare-row"><span class="compare-label">Safety to Humans</span><span class="compare-val red">⚠ Risk if misused</span></div>
+          <div class="compare-row"><span class="compare-label">Environmental Impact</span><span class="compare-val red">⚠ Significant</span></div>
+          <div class="compare-row"><span class="compare-label">Soil Health</span><span class="compare-val red">⚠ Degrades over time</span></div>
+          <div class="compare-row"><span class="compare-label">Residue on Produce</span><span class="compare-val red">⚠ Possible</span></div>
+          <div class="compare-row"><span class="compare-label">Speed of Action</span><span class="compare-val">✓ Fast</span></div>
+          <div class="compare-row"><span class="compare-label">Cost</span><span class="compare-val">✓ Lower</span></div>
+          <div class="compare-row"><span class="compare-label">Shelf Life</span><span class="compare-val">✓ Longer</span></div>
+          <div class="compare-row"><span class="compare-label">Market Premium</span><span class="compare-val red">✗ Standard price</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SAFETY TIPS ════════════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Safety First</div>
+        <h2 class="section-title">Safe Pesticide Usage</h2>
+        <p class="section-sub" style="margin:0 auto;">Protect yourself, your family, and your soil. Follow these non-negotiable safety guidelines.</p>
+      </div>
+      <div class="safety-grid stagger">
+        <div class="safety-card">
+          <div class="safety-icon">🥽</div>
+          <div class="safety-title">Wear PPE Always</div>
+          <div class="safety-text">Gloves, goggles, mask and full-sleeve clothing are mandatory when mixing or spraying any pesticide.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">📖</div>
+          <div class="safety-title">Read the Label</div>
+          <div class="safety-text">Every label has dosage, dilution, waiting period and first-aid instructions. Never skip reading it.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">🕐</div>
+          <div class="safety-title">Respect Waiting Period</div>
+          <div class="safety-text">The Pre-Harvest Interval (PHI) is critical. Never harvest before the specified number of days after spraying.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">💨</div>
+          <div class="safety-title">Spray in Calm Wind</div>
+          <div class="safety-text">Spray early morning or late evening when wind speed is below 8 km/h to prevent drift and ensure coverage.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">🚰</div>
+          <div class="safety-title">Safe Disposal</div>
+          <div class="safety-text">Never dump empty containers near water bodies. Rinse triple-times and puncture before disposal or return to dealer.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">🔒</div>
+          <div class="safety-title">Secure Storage</div>
+          <div class="safety-text">Store in original containers, in a locked, cool, dry place away from food, feed, and children at all times.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">🌧️</div>
+          <div class="safety-title">Avoid Rain Days</div>
+          <div class="safety-text">Do not spray if rain is expected within 4–6 hours. Rain washes pesticide off plants and contaminates waterways.</div>
+        </div>
+        <div class="safety-card">
+          <div class="safety-icon">🏥</div>
+          <div class="safety-title">Know First Aid</div>
+          <div class="safety-text">In case of poisoning: fresh air, remove contaminated clothing, rinse skin/eyes with water, and go to hospital immediately.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ IPM SECTION ════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner reveal">
+      <div class="glass-card" style="background:linear-gradient(135deg,rgba(26,92,52,0.3),rgba(45,140,85,0.15));">
+        <div class="col-2">
+          <div>
+            <div class="section-label">Best Practice</div>
+            <h2 class="section-title" style="font-size:2rem;">Integrated Pest Management (IPM)</h2>
+            <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.5rem;">IPM is the gold standard of modern pest control. It combines biological, cultural, physical and chemical tools in a way that minimizes economic, health, and environmental risks.</p>
+            <div class="info-box">
+              <div class="info-box-title">🌱 IPM Hierarchy</div>
+              <p>Prevention → Monitoring → Biological Control → Cultural Practices → Mechanical Control → Chemical (last resort) → Evaluation</p>
+            </div>
+          </div>
+          <div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-label"><span>Prevention & Cultural Practices</span><span>40%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="40%" style="width:0%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-label"><span>Biological Control Agents</span><span>30%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="30%" style="width:0%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-label"><span>Mechanical & Physical Methods</span><span>20%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="20%" style="width:0%"></div></div>
+            </div>
+            <div class="progress-bar-wrapper">
+              <div class="progress-label"><span>Chemical Pesticides (last resort)</span><span>10%</span></div>
+              <div class="progress-track"><div class="progress-fill" data-width="10%" style="width:0%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

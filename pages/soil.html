@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soil & Land — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .soil-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:2rem;transition:var(--transition);position:relative;overflow:hidden;}
+    .soil-card:hover{transform:translateY(-6px);border-color:rgba(62,255,138,0.3);}
+    .soil-color-strip{height:5px;border-radius:0 0 0 0;margin:-2rem -2rem 1.5rem;background:var(--soil-color,#6b4226);}
+    .soil-icon{font-size:2.5rem;margin-bottom:0.8rem;}
+    .soil-name{font-family:var(--font-display);font-weight:800;font-size:1.2rem;margin-bottom:0.4rem;}
+    .soil-region{font-size:0.78rem;color:var(--green-neon);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.8rem;}
+    .soil-desc{font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1rem;}
+    .soil-props{display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;}
+    .soil-prop{font-size:0.78rem;color:rgba(255,255,255,0.45);}
+    .soil-prop span{color:rgba(255,255,255,0.8);font-weight:500;}
+    .soil-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .irrigation-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .irr-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.8rem 1.2rem;text-align:center;transition:var(--transition);}
+    .irr-card:hover{border-color:rgba(62,255,138,0.3);transform:translateY(-4px);}
+    .irr-icon{font-size:3rem;margin-bottom:0.8rem;}
+    .irr-title{font-family:var(--font-display);font-weight:700;font-size:0.95rem;margin-bottom:0.5rem;}
+    .irr-text{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.6;}
+    .irr-save{margin-top:0.8rem;font-size:0.75rem;color:var(--green-neon);font-weight:600;}
+    @media(max-width:900px){.soil-grid{grid-template-columns:1fr 1fr;}.irrigation-cards{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.soil-grid,.irrigation-cards{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Soil & Land</span></div>
+      <div class="section-label">Earth Science</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Soil &<br><span class="text-neon">Land Science</span></h1>
+      <p class="section-sub">Your soil is your most valuable asset. Learn to read it, feed it, and protect it for generations to come.</p>
+    </div>
+  </section>
+
+  <!-- ══ SOIL TYPES ═════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Classification</div>
+        <h2 class="section-title">India's Major Soil Types</h2>
+        <p class="section-sub" style="margin:0 auto;">India has 8 major soil types covering diverse agricultural zones. Knowing your soil type is the first step to great farming.</p>
+      </div>
+      <div class="soil-grid stagger">
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#8B0000;"></div>
+          <div class="soil-icon">🏺</div>
+          <div class="soil-name">Alluvial Soil</div>
+          <div class="soil-region">Gangetic Plains · 43% of India</div>
+          <div class="soil-desc">Most fertile soil in India. Rich in potash, lime and humus. Found in river deltas and plains. Best for intensive agriculture.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>6.5–7.5</span></div>
+            <div class="soil-prop">Texture: <span>Loamy/Sandy</span></div>
+            <div class="soil-prop">Drainage: <span>Good</span></div>
+            <div class="soil-prop">Best Crops: <span>Wheat, Rice, Sugarcane</span></div>
+          </div>
+        </div>
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#2F2F2F;"></div>
+          <div class="soil-icon">⬛</div>
+          <div class="soil-name">Black Soil (Regur)</div>
+          <div class="soil-region">Deccan Plateau · Maharashtra, MP</div>
+          <div class="soil-desc">Self-plowing soil rich in calcium, potassium and magnesium. Excellent water retention. Ideal for rain-fed agriculture.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>7.2–8.5</span></div>
+            <div class="soil-prop">Texture: <span>Fine Clayey</span></div>
+            <div class="soil-prop">Drainage: <span>Poor (swells)</span></div>
+            <div class="soil-prop">Best Crops: <span>Cotton, Soybean, Jowar</span></div>
+          </div>
+        </div>
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#B85C38;"></div>
+          <div class="soil-icon">🟤</div>
+          <div class="soil-name">Red & Yellow Soil</div>
+          <div class="soil-region">Eastern India · Odisha, AP</div>
+          <div class="soil-desc">Iron-rich soil that turns yellow when hydrated. Low fertility, requires heavy fertilization. Responds well to organic amendments.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>5.0–6.5</span></div>
+            <div class="soil-prop">Texture: <span>Sandy Loam</span></div>
+            <div class="soil-prop">Drainage: <span>Excellent</span></div>
+            <div class="soil-prop">Best Crops: <span>Groundnut, Millets, Tobacco</span></div>
+          </div>
+        </div>
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#8B6914;"></div>
+          <div class="soil-icon">🪨</div>
+          <div class="soil-name">Laterite Soil</div>
+          <div class="soil-region">Western Ghats · Kerala, Goa</div>
+          <div class="soil-desc">Leached soil poor in lime and nitrogen. Acidic in nature. Suitable for plantation crops with proper management.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>4.5–6.0</span></div>
+            <div class="soil-prop">Texture: <span>Coarse</span></div>
+            <div class="soil-prop">Drainage: <span>Very Good</span></div>
+            <div class="soil-prop">Best Crops: <span>Tea, Coffee, Cashew</span></div>
+          </div>
+        </div>
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#D2B48C;"></div>
+          <div class="soil-icon">🏜️</div>
+          <div class="soil-name">Arid & Desert Soil</div>
+          <div class="soil-region">Rajasthan · Gujarat (parts)</div>
+          <div class="soil-desc">Sandy, low in organic matter and moisture. High soluble salt content. Requires irrigation and organic additions to be productive.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>7.5–9.5</span></div>
+            <div class="soil-prop">Texture: <span>Sandy</span></div>
+            <div class="soil-prop">Drainage: <span>Very High</span></div>
+            <div class="soil-prop">Best Crops: <span>Bajra, Clusterbean, Moth Bean</span></div>
+          </div>
+        </div>
+        <div class="soil-card">
+          <div class="soil-color-strip" style="--soil-color:#228B22;"></div>
+          <div class="soil-icon">🌳</div>
+          <div class="soil-name">Forest & Mountain Soil</div>
+          <div class="soil-region">Himalayas · Northeast India</div>
+          <div class="soil-desc">Rich in humus and organic matter in upper layers. Varies greatly with altitude and vegetation cover. Prone to erosion on slopes.</div>
+          <div class="soil-props">
+            <div class="soil-prop">pH: <span>5.5–7.0</span></div>
+            <div class="soil-prop">Texture: <span>Loamy (varies)</span></div>
+            <div class="soil-prop">Drainage: <span>Moderate</span></div>
+            <div class="soil-prop">Best Crops: <span>Apple, Tea, Maize</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SOIL HEALTH ════════════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="col-2 reveal">
+        <div>
+          <div class="section-label">Soil Health</div>
+          <h2 class="section-title">The Soil Health<br>Report Card</h2>
+          <p style="color:rgba(255,255,255,0.65);line-height:1.8;margin-bottom:1.5rem;">A healthy soil teems with billions of microorganisms that recycle nutrients, improve structure, and suppress disease. Monitor these key indicators for optimal farm performance.</p>
+          <div class="info-box">
+            <div class="info-box-title">📋 Get Your Free Soil Test</div>
+            <p>Visit your nearest Krishi Vigyan Kendra (KVK) or Soil Testing Laboratory. The Soil Health Card scheme provides free testing to every farmer in India.</p>
+          </div>
+          <a href="schemes.html" class="btn-primary-glow" style="display:inline-flex;margin-top:1.5rem;"><span>🏛️</span><span>View Soil Health Schemes</span></a>
+        </div>
+        <div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🟢 Organic Matter Content</span><span>Good: >3%</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="65%" style="width:0%"></div></div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🔵 Water Holding Capacity</span><span>Adequate</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="72%" style="width:0%"></div></div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🟡 Microbial Activity</span><span>Moderate</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="48%" style="width:0%"></div></div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🟠 Nitrogen (N) Levels</span><span>Low</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="35%" style="width:0%"></div></div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🟣 Phosphorus (P) Levels</span><span>Good</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="80%" style="width:0%"></div></div>
+          </div>
+          <div class="progress-bar-wrapper">
+            <div class="progress-label"><span>🔴 Potassium (K) Levels</span><span>Excellent</span></div>
+            <div class="progress-track"><div class="progress-fill" data-width="88%" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LAND PREPARATION ════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Land Preparation</div>
+        <h2 class="section-title">Preparing Your Land<br>for Success</h2>
+      </div>
+      <div class="features-strip stagger">
+        <div class="feature-item">
+          <div class="feature-icon">🚜</div>
+          <div class="feature-title">Deep Plowing</div>
+          <div class="feature-text">Plow to 20–30 cm depth to break hardpan, improve aeration and water infiltration. Use subsoil plowing every 3–4 years to prevent compaction.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📐</div>
+          <div class="feature-title">Land Leveling</div>
+          <div class="feature-text">Laser land leveling ensures uniform water distribution, reducing water use by 25% and improving germination uniformity across the field.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-title">Green Manuring</div>
+          <div class="feature-text">Grow dhaincha or sunhemp and incorporate at 45 days. Adds 60–80 kg N/ha and improves soil structure without any chemical input.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">♻️</div>
+          <div class="feature-title">Crop Residue Management</div>
+          <div class="feature-text">Incorporate residues instead of burning. Adds organic matter, suppresses weeds, and reduces stubble burning pollution significantly.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🪱</div>
+          <div class="feature-title">Vermicomposting</div>
+          <div class="feature-text">Earthworm-processed organic matter is 5x more nutrient-dense than regular compost. Easy to make at farm scale with kitchen and crop waste.</div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🧪</div>
+          <div class="feature-title">pH Correction</div>
+          <div class="feature-text">Acidic soils: apply agricultural lime. Alkaline soils: apply gypsum or sulphur. pH correction improves nutrient availability and microbial activity.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SMART IRRIGATION ════════════════════════════════════════ -->
+  <section id="irrigation" class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Water Management</div>
+        <h2 class="section-title">Smart <span class="text-neon">Irrigation</span> Systems</h2>
+        <p class="section-sub" style="margin:0 auto;">Water is the most precious resource in farming. Modern irrigation technology can save up to 50% of water while improving yield.</p>
+      </div>
+      <div class="irrigation-cards stagger">
+        <div class="irr-card">
+          <div class="irr-icon">💧</div>
+          <div class="irr-title">Drip Irrigation</div>
+          <div class="irr-text">Delivers water directly to the root zone drop by drop. Eliminates runoff and evaporation losses.</div>
+          <div class="irr-save">Saves 40–50% water</div>
+        </div>
+        <div class="irr-card">
+          <div class="irr-icon">🌀</div>
+          <div class="irr-title">Sprinkler System</div>
+          <div class="irr-text">Simulates rainfall. Ideal for undulating terrain and closely-spaced crops like wheat and vegetables.</div>
+          <div class="irr-save">Saves 25–35% water</div>
+        </div>
+        <div class="irr-card">
+          <div class="irr-icon">🤖</div>
+          <div class="irr-title">IoT Sensor Irrigation</div>
+          <div class="irr-text">Soil moisture sensors trigger irrigation automatically. Only water when the crop actually needs it.</div>
+          <div class="irr-save">Saves up to 60% water</div>
+        </div>
+        <div class="irr-card">
+          <div class="irr-icon">🌊</div>
+          <div class="irr-title">Furrow Irrigation</div>
+          <div class="irr-text">Traditional channel method improved with alternate furrow technique. Good for row crops and water-tolerant plants.</div>
+          <div class="irr-save">Saves 10–20% water</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

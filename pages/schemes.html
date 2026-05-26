@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Government Schemes — AgroFuture</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>"/>
+  <style>
+    .schemes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .scheme-amount{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--green-neon);letter-spacing:-1px;margin:0.5rem 0;}
+    .scheme-eligibility-list{margin-top:1rem;}
+    .scheme-eligibility-list li{font-size:0.82rem;color:rgba(255,255,255,0.55);padding:0.25rem 0;padding-left:1.2rem;position:relative;}
+    .scheme-eligibility-list li::before{content:'✓';position:absolute;left:0;color:var(--green-neon);font-size:0.8rem;}
+    .scheme-tabs{display:flex;gap:0.6rem;flex-wrap:wrap;margin-bottom:2rem;}
+    .scheme-tab{background:var(--glass-bg);border:1px solid var(--glass-border);color:rgba(255,255,255,0.65);border-radius:50px;padding:0.5rem 1.2rem;font-size:0.85rem;cursor:pointer;transition:var(--transition);}
+    .scheme-tab:hover,.scheme-tab.active{background:var(--green-mid);border-color:var(--green-mid);color:white;}
+    .helpline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+    .helpline-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:1.5rem;text-align:center;transition:var(--transition);}
+    .helpline-card:hover{border-color:rgba(62,255,138,0.3);transform:translateY(-4px);}
+    .helpline-number{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--green-neon);letter-spacing:-1px;margin:0.5rem 0;}
+    .helpline-label{font-size:0.78rem;color:rgba(255,255,255,0.5);}
+    .timeline-scheme{position:relative;padding-left:2.5rem;}
+    .timeline-scheme::before{content:'';position:absolute;left:0.5rem;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--green-neon),transparent);}
+    .ts-item{position:relative;margin-bottom:2.5rem;}
+    .ts-dot{position:absolute;left:-2rem;top:4px;width:12px;height:12px;background:var(--green-neon);border-radius:50%;box-shadow:0 0 10px var(--green-neon);}
+    .ts-year{font-size:0.75rem;color:var(--green-neon);font-weight:600;text-transform:uppercase;letter-spacing:0.1em;}
+    .ts-title{font-family:var(--font-display);font-weight:700;font-size:1rem;margin:0.2rem 0 0.4rem;}
+    .ts-text{font-size:0.85rem;color:rgba(255,255,255,0.55);line-height:1.65;}
+    @media(max-width:900px){.schemes-grid{grid-template-columns:1fr 1fr;}.helpline-grid{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){.schemes-grid,.helpline-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══════════════════════════════════════════════════ -->
+  <section class="page-hero" style="padding-top:100px;">
+    <div class="page-hero-bg" style="background-image:url('https://images.unsplash.com/photo-1599059813005-11265ba4b4ce?w=1600&q=80');"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb-nav"><a href="../index.html">Home</a><span>/</span><span>Government Schemes</span></div>
+      <div class="section-label">Farmer Support</div>
+      <h1 class="section-title" style="font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-3px;">Government<br><span class="text-neon">Schemes</span></h1>
+      <p class="section-sub">Discover all Central and State Government schemes you're eligible for — subsidies, insurance, loans and direct benefits.</p>
+    </div>
+  </section>
+
+  <!-- ══ STATS ══════════════════════════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="stats-inner stagger">
+      <div class="stat-item"><div class="stat-number" data-target="110" data-suffix="M+">0</div><div class="stat-label">PM-KISAN Beneficiaries</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="6000" data-prefix="₹" data-suffix="/yr">0</div><div class="stat-label">Direct Income Support</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="60" data-suffix="% subsidy">0</div><div class="stat-label">On Premium Crops Insurance</div></div>
+      <div class="stat-item"><div class="stat-number" data-target="3" data-suffix=" Lakh Cr">0</div><div class="stat-label">Agri Credit Target 2025</div></div>
+    </div>
+  </div>
+
+  <!-- ══ SCHEME TABS & CARDS ════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Central Government</div>
+        <h2 class="section-title">Major Farmer Welfare<br><span class="text-neon">Schemes 2025</span></h2>
+      </div>
+
+      <div class="scheme-tabs reveal">
+        <button class="scheme-tab active" data-filter="all">🌾 All Schemes</button>
+        <button class="scheme-tab" data-filter="income">💰 Income Support</button>
+        <button class="scheme-tab" data-filter="insurance">🛡️ Insurance</button>
+        <button class="scheme-tab" data-filter="credit">🏦 Credit & Loans</button>
+        <button class="scheme-tab" data-filter="technology">🤖 Technology</button>
+        <button class="scheme-tab" data-filter="organic">🌿 Organic</button>
+      </div>
+
+      <div class="schemes-grid stagger" id="schemes-grid">
+
+        <div class="scheme-card" data-cat="income">
+          <div class="scheme-badge">Income Support</div>
+          <div class="scheme-title">PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)</div>
+          <div class="scheme-amount">₹6,000 / year</div>
+          <div class="scheme-desc">Direct income support in 3 equal instalments of ₹2,000 each, transferred directly to bank accounts of eligible farmers every 4 months.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Small & marginal farmers owning up to 2 hectares</li>
+            <li>Valid Aadhaar card linked to bank account</li>
+            <li>Must be registered in PM-KISAN portal</li>
+            <li>Not a government employee or taxpayer</li>
+          </ul>
+          <a href="https://pmkisan.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="insurance">
+          <div class="scheme-badge">Crop Insurance</div>
+          <div class="scheme-title">PM Fasal Bima Yojana (PMFBY)</div>
+          <div class="scheme-amount">2% Premium (Kharif)</div>
+          <div class="scheme-desc">Comprehensive crop insurance scheme covering sowing risk, standing crop damage, post-harvest losses and localised calamities with minimal farmer premium.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>All farmers including tenant farmers</li>
+            <li>Kharif crops: 2% premium, Rabi: 1.5%</li>
+            <li>Horticulture crops: 5% premium max</li>
+            <li>Compulsory for loanee farmers, optional others</li>
+          </ul>
+          <a href="https://pmfby.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="income">
+          <div class="scheme-badge">Price Support</div>
+          <div class="scheme-title">PM-AASHA (Price Assurance & Farm Services)</div>
+          <div class="scheme-amount">MSP Guarantee</div>
+          <div class="scheme-desc">Ensures farmers receive Minimum Support Price for oilseeds and pulses through Price Support Scheme (PSS) and Price Deficiency Payment Scheme (PDPS).</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Farmers growing notified oilseeds & pulses</li>
+            <li>Registered with local APMC or procurement agency</li>
+            <li>Quantity within specified procurement limits</li>
+            <li>Valid land records and identity proof</li>
+          </ul>
+          <a href="https://agriculture.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="credit">
+          <div class="scheme-badge">Agricultural Credit</div>
+          <div class="scheme-title">Kisan Credit Card (KCC)</div>
+          <div class="scheme-amount">Up to ₹3 Lakh @ 4%</div>
+          <div class="scheme-desc">Provides timely credit for crop cultivation, post-harvest expenses, maintenance of farm assets and ancillary activities at highly subsidised interest rates.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Individual/joint farmers owning agricultural land</li>
+            <li>Tenant farmers, oral lessees, share croppers</li>
+            <li>SHGs and Joint Liability Groups of farmers</li>
+            <li>Interest subvention: 3% for prompt repayment</li>
+          </ul>
+          <a href="https://www.nabard.org" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="technology">
+          <div class="scheme-badge">Digital Agriculture</div>
+          <div class="scheme-title">Digital Agriculture Mission 2021–25</div>
+          <div class="scheme-amount">₹2,817 Crore</div>
+          <div class="scheme-desc">Building digital infrastructure including Agri Stack, farmers database, unified farmer service interface, and drone technology for precision agriculture.</div>
+          <div class="scheme-eligibility">✅ Key Components:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Farmer ID & unified farmers' digital identity</li>
+            <li>Crop survey using drones & satellite</li>
+            <li>Agri market intelligence platform</li>
+            <li>Soil profile mapping for all farm land</li>
+          </ul>
+          <a href="https://agriculture.gov.in" target="_blank" class="btn-apply">Learn More →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="organic">
+          <div class="scheme-badge">Organic Promotion</div>
+          <div class="scheme-title">Paramparagat Krishi Vikas Yojana (PKVY)</div>
+          <div class="scheme-amount">₹50,000 / hectare</div>
+          <div class="scheme-desc">Promotes cluster-based organic farming with financial assistance for certification, inputs, marketing and value addition to organic produce groups.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Minimum 50 farmers forming a cluster</li>
+            <li>Minimum 50 acres of contiguous farmland</li>
+            <li>3-year commitment to organic conversion</li>
+            <li>PGS-India certification process mandatory</li>
+          </ul>
+          <a href="https://pgsindia-ncof.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="technology">
+          <div class="scheme-badge">Irrigation</div>
+          <div class="scheme-title">PM Krishi Sinchai Yojana (PMKSY)</div>
+          <div class="scheme-amount">55% subsidy (SC/ST: 75%)</div>
+          <div class="scheme-desc">'More Crop Per Drop' — provides subsidy on drip and sprinkler irrigation systems to promote water use efficiency in agriculture across India.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>All categories of farmers</li>
+            <li>Individual, cooperative and FPO farmers</li>
+            <li>SC/ST farmers get additional 20% subsidy</li>
+            <li>Apply through state horticulture department</li>
+          </ul>
+          <a href="https://pmksy.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="insurance">
+          <div class="scheme-badge">Risk Management</div>
+          <div class="scheme-title">Restructured Weather Based Crop Insurance</div>
+          <div class="scheme-amount">Weather index-linked</div>
+          <div class="scheme-desc">Compensates farmers against weather-related crop losses using automated weather station data — faster claims without field survey requirement.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Farmers in notified areas and crops</li>
+            <li>Coverage for rainfall, temperature, humidity</li>
+            <li>Automatic trigger-based payout system</li>
+            <li>Available through all commercial banks</li>
+          </ul>
+          <a href="https://pmfby.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+        <div class="scheme-card" data-cat="credit">
+          <div class="scheme-badge">Rural Finance</div>
+          <div class="scheme-title">Agriculture Infrastructure Fund (AIF)</div>
+          <div class="scheme-amount">₹1 Lakh Crore Fund</div>
+          <div class="scheme-desc">Long-term debt financing for post-harvest management infrastructure, community farming assets and agri-logistics projects with 3% interest subvention.</div>
+          <div class="scheme-eligibility">✅ Eligibility Criteria:</div>
+          <ul class="scheme-eligibility-list">
+            <li>Farmers, FPOs, PACS, SHGs, Agri-startups</li>
+            <li>Primary agricultural cooperative societies</li>
+            <li>National & state agri federations</li>
+            <li>Maximum ₹2 crore per beneficiary</li>
+          </ul>
+          <a href="https://agriinfra.dac.gov.in" target="_blank" class="btn-apply">Apply Now →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SCHEME TIMELINE ════════════════════════════════════════ -->
+  <section class="section" style="background:rgba(255,255,255,0.02);">
+    <div class="section-inner">
+      <div class="col-2 reveal">
+        <div>
+          <div class="section-label">History</div>
+          <h2 class="section-title">Key Agricultural<br>Policy Milestones</h2>
+          <p style="color:rgba(255,255,255,0.65);line-height:1.8;">India's agricultural policy journey — from Green Revolution to Digital Agriculture.</p>
+        </div>
+        <div class="timeline-scheme">
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">1966</div><div class="ts-title">Green Revolution</div><div class="ts-text">HYV wheat & rice seeds transform Indian agriculture — making the country self-sufficient in food grain.</div></div>
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">1982</div><div class="ts-title">NABARD Established</div><div class="ts-text">National Bank for Agriculture and Rural Development set up to provide institutional credit to agriculture.</div></div>
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">2004</div><div class="ts-title">National Agriculture Policy</div><div class="ts-text">Farmer Income Doubling target announced. NREGP extended to support agricultural labour.</div></div>
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">2016</div><div class="ts-title">PM Fasal Bima Yojana</div><div class="ts-text">Universal crop insurance launched, replacing existing schemes with lower premiums and faster payouts.</div></div>
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">2018</div><div class="ts-title">PM-KISAN Launched</div><div class="ts-text">₹6,000/year direct income support announced for 140 million small and marginal farming families.</div></div>
+          <div class="ts-item"><div class="ts-dot"></div><div class="ts-year">2025</div><div class="ts-title">Digital Agriculture Mission</div><div class="ts-text">AI, drones, satellite-based precision farming and Agri Stack digital infrastructure rolled out nationally.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ HELPLINES ═════════════════════════════════════════════ -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="text-center mb-3 reveal">
+        <div class="section-label">Farmer Helplines</div>
+        <h2 class="section-title">Need Help? Call Us</h2>
+      </div>
+      <div class="helpline-grid stagger">
+        <div class="helpline-card"><div style="font-size:2rem;">📞</div><div class="helpline-number">1800-180-1551</div><div class="helpline-label">Kisan Call Centre (24×7 Free)</div></div>
+        <div class="helpline-card"><div style="font-size:2rem;">🌿</div><div class="helpline-number">1800-11-8989</div><div class="helpline-label">NABARD Farmer Helpline</div></div>
+        <div class="helpline-card"><div style="font-size:2rem;">🛡️</div><div class="helpline-number">14447</div><div class="helpline-label">PM-KISAN Direct Helpline</div></div>
+        <div class="helpline-card"><div style="font-size:2rem;">💧</div><div class="helpline-number">1800-180-4200</div><div class="helpline-label">PMKSY Irrigation Helpline</div></div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../assets/js/components.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // ── Scheme filter tabs ─────────────────────────────────────
+    document.querySelectorAll('.scheme-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.scheme-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+        document.querySelectorAll('#schemes-grid .scheme-card').forEach(card => {
+          card.style.display = (filter === 'all' || card.dataset.cat === filter) ? 'block' : 'none';
+          if(card.style.display === 'block') card.style.animation = 'scaleIn 0.4s ease';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
