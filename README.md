@@ -1,0 +1,1 @@
+A responsive agriculture web application developed using modern web technologies to promote smart farming practices, crop management, organic farming awareness, and agricultural product services with a user-friendly interface.
